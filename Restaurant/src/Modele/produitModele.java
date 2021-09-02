@@ -1,11 +1,15 @@
 package Modele;
 
 public class produitModele {
-	private String idProduit;
+	private int idProduit;
 	private String libelleProduit;
 	private String categorie;
 	private float prixUnitaire;
 	private String photo;
+	
+	public produitModele() {
+		
+	}
 	
 	// création nouveau produit
 	public produitModele( String libelleProduit,
@@ -19,7 +23,7 @@ public class produitModele {
 	}
 	
 	// modification ou supprimer du produit
-	public produitModele( String idProduit,
+	public produitModele( int idProduit,
 					String libelleProduit,
 					String categorie,
 					float prixUnitaire,
@@ -31,11 +35,11 @@ public class produitModele {
 		this.photo = photo;
 	}
 
-	public String getIdProduit() {
+	public int getIdProduit() {
 		return idProduit;
 	}
 
-	public void setIdProduit(String idProduit) {
+	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;
 	}
 
@@ -59,7 +63,9 @@ public class produitModele {
 		return prixUnitaire;
 	}
 
-	public void setPrixUnitaire(float prixUnitaire) {
+	public void setPrixUnitaire(float prixUnitaire) throws Exception{
+		if (prixUnitaire <0)
+			throw new Exception("prix erroné");
 		this.prixUnitaire = prixUnitaire;
 	}
 

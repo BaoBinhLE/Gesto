@@ -1,4 +1,4 @@
-package Controleur;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import Controleur.ConnexionBDD;
+import DAO.produit_DAO;
 import Modele.produitModele;
-import Controleur.produitControleur;
 
-public class produitControleur {
+public class produit_DAO {
 	
 	 private static Connection conn = null;
 
@@ -57,7 +58,7 @@ public class produitControleur {
 	            while (rs.next()) {
 	            	produitModele produit = new produitModele();
 	            	//setter des propriétés de produit
-	            	produit.setIdProduit(rs.getString(1));
+	            	produit.setIdProduit(rs.getInt(1));
 	            	produit.setLibelleProduit(rs.getString(2));
 	            	produit.setCategorie(rs.getString(3));
 	            	produit.setPrixUnitaire(rs.getFloat(4));
@@ -91,7 +92,7 @@ public class produitControleur {
 	            if (rs.next()) {
 	            	produitModele produit = new produitModele();
 	            	//setter des propriétés de produit
-	            	produit.setIdProduit(rs.getString(1));
+	            	produit.setIdProduit(rs.getInt(1));
 	            	produit.setLibelleProduit(rs.getString(2));
 	            	produit.setCategorie(rs.getString(3));
 	            	produit.setPrixUnitaire(rs.getFloat(4));
@@ -123,7 +124,7 @@ public class produitControleur {
 	            while (rs.next()) {
 	            	produitModele produit = new produitModele();
 	            	//setter des propriétés de produit
-	            	produit.setIdProduit(rs.getString(1));
+	            	produit.setIdProduit(rs.getInt(1));
 	            	produit.setLibelleProduit(rs.getString(2));
 	            	produit.setCategorie(rs.getString(3));
 	            	produit.setPrixUnitaire(rs.getFloat(4));

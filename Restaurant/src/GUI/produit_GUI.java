@@ -1,4 +1,4 @@
-package Vue;
+package GUI;
 
 import java.awt.Color;
 
@@ -23,9 +23,16 @@ import javax.swing.table.DefaultTableModel;
 import Custom.monButton;
 import Custom.monTableau;
 import Modele.produitModele;
-import Controleur.produitControleur;
+import static Main.main.changeLNF;
 
-public class produit extends JPanel{
+public class produit_GUI extends JPanel{
+	
+	public produit_GUI() {
+		changeLNF("Windows");
+		addComponents();
+		
+	}
+	
 	produitModele modele;
 	
 	Font f = new Font("TimesRoman", Font.BOLD, 18);
@@ -51,10 +58,7 @@ public class produit extends JPanel{
 	DefaultTableModel model;
 	JScrollPane pane;
 
-	public produit() {
-		addComponents();
-		
-	}
+	
 	
 	public void AfficheTableauProduit() {
         produitControleur product = new produitControleur();
