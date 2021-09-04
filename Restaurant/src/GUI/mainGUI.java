@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import Vue.*;
 
 public class mainGUI {
 	
@@ -17,7 +16,7 @@ public class mainGUI {
 	moduleMenu menu = new moduleMenu();
 	moduleCommande commande = new moduleCommande();
 	moduleCA ca = new moduleCA();
-	produit produit = new produit();
+	produit_GUI produit = new produit_GUI();
 	JFrame fenetre;
 	JTabbedPane tabs;
 	JPanel tabEmploye, tabMenu, tabCommande, tabCompte, tabCA;

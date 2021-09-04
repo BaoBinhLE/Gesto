@@ -78,7 +78,7 @@ public class produit_BUS {
     /*
      * obtenir le lien d'image de produit 
      */
-    public String getPhoto(String id) {
+    public String getImage(String id) {
         int idProduit = Integer.parseInt(id);
         return produitDAO.getImage(idProduit);
     }
@@ -124,7 +124,7 @@ public class produit_BUS {
      */
     public boolean suppressionProduit(String id) {
         if (id.trim().equals("")) {
-            new monDialogue("Veuillez saisir le ID de produit à supprimer !", monDialogue.ERROR_DIALOG);
+            new monDialogue("Veuillez choisir le produit à supprimer !", monDialogue.ERROR_DIALOG);
             return false;
         }
 
@@ -149,7 +149,7 @@ public class produit_BUS {
 
         try {
             if (id.trim().equals("")) {
-            	 new monDialogue("Veuillez saisir le ID de produit !", monDialogue.ERROR_DIALOG);
+            	 new monDialogue("Veuillez choisir un produit !", monDialogue.ERROR_DIALOG);
                 return false;
             }
             int idProduit = Integer.parseInt(id);

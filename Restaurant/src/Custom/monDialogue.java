@@ -27,10 +27,10 @@ public class monDialogue extends JDialog {
     JPanel pnMain, pnTop, pnBottom, pnButton;
     JLabel lblIcon, lblContent, lblClose;
     JButton btnOK, btnCancel;
-    final ImageIcon iconError = new ImageIcon("image/MessageIcon/icons8_cancel_70px.png");
-    final ImageIcon iconSuccess = new ImageIcon("image/MessageIcon/icons8_checkmark_70px.png");
-    final ImageIcon iconInfo = new ImageIcon("image/MessageIcon/icons8_info_70px.png");
-    final ImageIcon iconWarning = new ImageIcon("image/MessageIcon/icons8_warning_shield_70px.png");
+    final ImageIcon iconError = new ImageIcon("images/MessageIcon/icons8_cancel_70px.png");
+    final ImageIcon iconSuccess = new ImageIcon("images/MessageIcon/icons8_checkmark_70px.png");
+    final ImageIcon iconInfo = new ImageIcon("images/MessageIcon/icons8_info_70px.png");
+    final ImageIcon iconWarning = new ImageIcon("images/MessageIcon/icons8_warning_shield_70px.png");
 
     private void addControls() {
         Container con = getContentPane();

@@ -175,7 +175,7 @@ public class produit_DAO {
 	    public boolean ajouteProduit(produitModele produitAjoute) {
 	        try {
 	        	conn = ConnexionBDD.getConnect() ;	
-	            String sql = "INSERT INTO produit(Libelle, Libelle_categorie, Prix_nitaire,Photo) "
+	            String sql = "INSERT INTO produit(Libelle, Libelle_categorie, Prix_unitaire,Photo) "
 	                    + "VALUES (?, ?, ?, ?)";
 	            PreparedStatement pre = conn.prepareStatement(sql);
 	            pre.setString(1, produitAjoute.getLibelleProduit());
@@ -223,13 +223,13 @@ public class produit_DAO {
 	     */
 	    public boolean majProduit(produitModele produitMaj) {
 	        try {
-	            String sql = "UPDATE produit SET Libelle = ? , Libelle_categorie = ? , Prix_unitaire = ? , Photo = ? WHERE ID_Produit ="+produitMaj;
+	        	conn = ConnexionBDD.getConnect() ;	
+	            String sql = "UPDATE produit SET Libelle = ? , Libelle_categorie = ? , Prix_unitaire = ? , Photo = ? WHERE ID_Produit ="+produitMaj.getIdProduit();
 	            PreparedStatement pre = conn.prepareStatement(sql);
 	            pre.setString(1, produitMaj.getLibelleProduit());
 	            pre.setString(2, produitMaj.getCategorie());
 	            pre.setFloat(3, produitMaj.getPrixUnitaire());
 	            pre.setString(4, produitMaj.getPhoto());
-
 	            pre.execute();
 	            return true;
 	        } catch (SQLException e) {
