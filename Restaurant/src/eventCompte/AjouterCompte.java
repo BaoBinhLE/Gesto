@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import Controleur.ConnexionBDD;
+import DAO.ConnexionBDD;
 
 public class AjouterCompte implements ActionListener {
 	

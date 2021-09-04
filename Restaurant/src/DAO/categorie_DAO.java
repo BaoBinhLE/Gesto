@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Controleur.ConnexionBDD;
 import DTO.categorie;
 
 public class categorie_DAO {

@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JDateChooser;
 
-import Controleur.ConnexionBDD;
+import DAO.ConnexionBDD;
 
 import java.awt.event.ActionEvent;
 

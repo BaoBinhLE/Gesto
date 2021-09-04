@@ -8,9 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Controleur.ConnexionBDD;
 import DAO.produit_DAO;
-import Modele.produitModele;
+import DTO.produitModele;
 
 public class produit_DAO {
 	

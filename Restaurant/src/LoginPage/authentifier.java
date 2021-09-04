@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Controleur.ConnexionBDD;
+import DAO.ConnexionBDD;
 import GUI.mainGUI;
 import GUI.moduleEmploye;
 

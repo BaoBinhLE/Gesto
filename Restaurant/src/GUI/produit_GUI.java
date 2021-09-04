@@ -35,6 +35,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import DTO.categorie;
+import DTO.produitModele;
 import BUS.categorie_BUS;
 import BUS.produit_BUS;
 import Custom.ChoisirFichier;
@@ -42,7 +43,7 @@ import Custom.monButton;
 import Custom.monDialogue;
 import Custom.monTableau;
 import Custom.transparentPanel;
-import Modele.produitModele;
+
 import static Main.main.changeLNF;
 
 

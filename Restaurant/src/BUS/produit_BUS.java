@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import Custom.monDialogue;
 import DAO.produit_DAO;
-import Modele.produitModele;
+import DTO.produitModele;
 
 public class produit_BUS {
 	private ArrayList<produitModele> listeProduit = null;

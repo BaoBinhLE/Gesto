@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
-import Controleur.ConnexionBDD;
+import DAO.ConnexionBDD;
 
 
 		/*

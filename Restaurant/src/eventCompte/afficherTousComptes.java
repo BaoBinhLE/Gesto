@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 import javax.swing.table.DefaultTableModel;
 
-import Controleur.ConnexionBDD;
+import DAO.ConnexionBDD;
 
 public class afficherTousComptes {
 	

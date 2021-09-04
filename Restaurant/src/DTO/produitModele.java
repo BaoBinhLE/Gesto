@@ -1,4 +1,4 @@
-package Modele;
+package DTO;
 
 public class produitModele {
 	private int idProduit;
