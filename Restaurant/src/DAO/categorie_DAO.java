@@ -44,7 +44,7 @@ public class categorie_DAO {
 	public boolean ajouteCategorie(categorie cate) {
         try {
         	conn = ConnexionBDD.getConnect() ;	
-            String sql = "insert into categorie(Libelle_categorie) "
+            String sql = "insert into categorie(Libelle_Categorie) "
                     + "values ('"+ cate.getLibelleCategorie() + "')";
             Statement st = conn.createStatement();
             int x = st.executeUpdate(sql);
@@ -65,11 +65,10 @@ public class categorie_DAO {
 	 */
 	public boolean suppressionCategorie(String libelleCategorie) {
         try {
-            String sql = "DELETE FROM categorie WHERE Libelle_categorie=" + libelleCategorie;
-            conn = ConnexionBDD.getConnect() ;	
-        	Statement st = conn.createStatement();
-            int x = st.executeUpdate(sql);
-            return x > 0 ? true : false;
+        	conn = ConnexionBDD.getConnect() ;	
+        	Statement s = conn.createStatement();
+            s.execute("DELETE FROM categorie WHERE Libelle_Categorie= '"+libelleCategorie+"'");
+            return true;
         } catch (SQLException e) {
         	e.printStackTrace();
         	System.out.println("suppressionCategorie-SQLException: " + e.getMessage());

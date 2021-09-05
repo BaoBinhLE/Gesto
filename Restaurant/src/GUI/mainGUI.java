@@ -15,11 +15,12 @@ public class mainGUI {
 	moduleCompte compte = new moduleCompte();
 	moduleMenu menu = new moduleMenu();
 	moduleCommande commande = new moduleCommande();
+	client_GUI clientGUI = new client_GUI();
 	moduleCA ca = new moduleCA();
 	produit_GUI produit = new produit_GUI();
 	JFrame fenetre;
 	JTabbedPane tabs;
-	JPanel tabEmploye, tabMenu, tabCommande, tabCompte, tabCA;
+	JPanel tabEmploye, tabMenu, tabCommande, tabClient, tabCompte, tabCA;
 	
 	
 	public mainGUI(int habilitation) {
@@ -34,6 +35,7 @@ public class mainGUI {
 		tabs.addTab("Employe",employe);
 		tabs.addTab("Menu",produit);
 		tabs.addTab("Commande",commande);
+		tabs.addTab("Client",clientGUI);
 		tabs.addTab("Chiffre d'affaire",ca);
 		tabs.addTab("Compte",compte);
 		
