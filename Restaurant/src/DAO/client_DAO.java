@@ -87,7 +87,7 @@ public class client_DAO {
         boolean result = false;
         try {
         	conn = ConnexionBDD.getConnect() ;	
-        	 String sql = "INSERT INTO vlient VALUES(?,?,?,?,?,?,?)";
+        	 String sql = "INSERT INTO client VALUES(?,?,?,?,?,?,?)";
         	 PreparedStatement prep = conn.prepareStatement(sql);
              
              prep.setInt(1, c.getIdClient());
@@ -96,7 +96,7 @@ public class client_DAO {
              prep.setString(4, c.getAdresse());
              prep.setString(5, c.getNumTel());
              prep.setString(6, c.getEmail());
-             prep.setInt(5, c.getPoint());
+             prep.setInt(7, c.getPoint());
             
             result = prep.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -140,7 +140,8 @@ public class client_DAO {
             prep.setString(3, c.getAdresse());
             prep.setString(4, c.getNumTel());
             prep.setString(5, c.getEmail());
-            result = prep.execute();
+            prep.execute();
+            return true;
         } catch (SQLException ex) {
         	ex.printStackTrace();
         	System.out.println("majClient-SQLException: " + ex.getMessage());
