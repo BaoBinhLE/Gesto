@@ -55,13 +55,14 @@ public class commande_GUI extends JPanel{
         ArrayList<table> tableList = tableBUS.getlisteTable();
         JPanel panelTable = new transparentPanel();
         panelTable.setLayout(new FlowLayout(FlowLayout.LEADING));
-        for(table item : tableList)
+        JButton[] button = new JButton[tableList.size()];
+        for(int i=0;i<tableList.size();i++)
         {
         	String status = null ;
             Color c;
-            JButton btn = new JButton() ;
-            btn.setPreferredSize(new Dimension(120,80));
-            switch (item.getStatut())
+            button[i] = new JButton() ;
+            button[i].setPreferredSize(new Dimension(120,80));
+            switch (tableList.get(i).getStatut())
             {
                 case 1:
                 	c =  new Color(51,204,255); //VERY_LIGHT_BLUE
@@ -71,10 +72,9 @@ public class commande_GUI extends JPanel{
                 	c = new Color(255,102,102); // LIGHT_PINK
                     break;
             }
-            btn.setText("<html>"+(String)item.getLibelle()+"<br>"+status+ "</html>");
-            btn.setBackground(c);
-
-            panelTable.add(btn);
+            button[i].setText("<html>"+(String)tableList.get(i).getLibelle()+"<br>"+status+ "</html>");
+            button[i].setBackground(c);
+            panelTable.add(button[i]);
         }
         JScrollPane scrtabTable = new JScrollPane(panelTable);
         panelRemplir.add(scrtabTable);
@@ -97,7 +97,6 @@ public class commande_GUI extends JPanel{
         modelTabDetail.addColumn("Libellé");
         modelTabDetail.addColumn("Quantité");
         modelTabDetail.addColumn("Prix");
-
         tabDetail = new monTableau();
         tabDetail.setModel(modelTabDetail);
         
