@@ -446,13 +446,7 @@ public class produit_GUI extends JPanel{
     }
 
     private void traiteSuppressionProduit() {
-        monDialogue dlg = new monDialogue("Le produit sera être supprimé ?", monDialogue.WARNING_DIALOG);
-        if (monDialogue.OK_OPTION == dlg.getAction()) {
-            boolean flag = produitBUS.suppressionProduit(txtIdProduit.getText());
-            if (flag) {
-                loadTabProduit();
-            }
-        }
+        
     }
 	/*
 	 * enregister le fichier d'image 

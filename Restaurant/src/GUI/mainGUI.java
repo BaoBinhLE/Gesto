@@ -14,13 +14,15 @@ public class mainGUI {
 	moduleEmploye employe = new moduleEmploye();
 	moduleCompte compte = new moduleCompte();
 	moduleMenu menu = new moduleMenu();
-	moduleCommande commande = new moduleCommande();
 	client_GUI clientGUI = new client_GUI();
+	table_GUI tableGUI = new table_GUI();
+	facture_GUI factureGUI = new facture_GUI();
+	commande_GUI cmdGUI = new commande_GUI();
 	moduleCA ca = new moduleCA();
 	produit_GUI produit = new produit_GUI();
 	JFrame fenetre;
 	JTabbedPane tabs;
-	JPanel tabEmploye, tabMenu, tabCommande, tabClient, tabCompte, tabCA;
+	JPanel tabEmploye, tabMenu, tabCommande, tabClient, tabCompte, tabCA,tabTable, tabFacture;
 	
 	
 	public mainGUI(int habilitation) {
@@ -34,12 +36,12 @@ public class mainGUI {
 	
 		tabs.addTab("Employe",employe);
 		tabs.addTab("Menu",produit);
-		tabs.addTab("Commande",commande);
+		tabs.addTab("Commande",cmdGUI);
 		tabs.addTab("Client",clientGUI);
 		tabs.addTab("Chiffre d'affaire",ca);
 		tabs.addTab("Compte",compte);
-		
-		
+		tabs.addTab("Table",tableGUI);
+		tabs.addTab("Facture",factureGUI);
 		cprincipal.add(tabs);
 
 		fenetre.pack(); // calcul de la taille adéquate		

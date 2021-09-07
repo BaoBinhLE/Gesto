@@ -280,14 +280,13 @@ public class client_GUI extends JPanel{
         btnModif.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                xuLySuaKhachHang();
+                traiteModifClient();
             }
         });
 
     }
 
     private void loadTabClient() {
-        clientBUS.lireListeClient();
         ArrayList<client> liste = clientBUS.getlisteClient();
         loadTabClient(liste);
     }
@@ -331,7 +330,7 @@ public class client_GUI extends JPanel{
             btnReset.doClick();
     }
 
-    private void xuLySuaKhachHang() {
+    private void traiteModifClient() {
         if (clientBUS.majClient(txtIdClient.getText(), txtNom.getText(), txtPrenom.getText(), txtAdresse.getText(), txtNumTel.getText(), txtEmail.getText()))
             btnReset.doClick();
     }

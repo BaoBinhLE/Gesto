@@ -27,27 +27,6 @@ public class client_BUS {
         return listeClient;
     }
     
-    /*public ArrayList<client> rechercheClient(String txtMin, String txtMax) {
-        if (txtMax.trim().equals("") && txtMin.trim().equals(""))
-            return listeClient;
-        try {
-            ArrayList<client> dskh = new ArrayList<>();
-            txtMin = txtMin.replace(",", "");
-            txtMax = txtMax.replace(",", "");
-            int min = Integer.parseInt(txtMin);
-            int max = Integer.parseInt(txtMax);
-            for (client kh : listeClient) {
-                if (kh.getTongChiTieu() >= min && kh.getTongChiTieu() <= max) {
-                    dskh.add(kh);
-                }
-            }
-            return dskh;
-        } catch (Exception e) {
-            new monDialogue("HÃ£y nháº­p giÃ¡ trá»‹ nguyÃªn phÃ¹ há»£p!", monDialogue.ERROR_DIALOG);
-        }
-        return null;
-    }*/
-
     /*
      * recherche des clients par nom, prénom ou email 
      */
@@ -134,7 +113,9 @@ public class client_BUS {
             new monDialogue("Veuillez resssaisir l'adresse email !", monDialogue.ERROR_DIALOG);
             return false;
         }
+    	int idClient = Integer.parseInt(id);
         client c = new client();
+        c.setIdClient(idClient);
         c.setNom(nom);
         c.setPrenom(prenom);
         c.setAdresse(adresse);

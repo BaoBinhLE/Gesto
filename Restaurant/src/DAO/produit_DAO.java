@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import DAO.produit_DAO;
 import DTO.produitModele;
@@ -145,8 +144,7 @@ public class produit_DAO {
     public boolean ajouteProduit(produitModele produitAjoute) {
         try {
         	conn = ConnexionBDD.getConnect() ;	
-            String sql = "INSERT INTO produit(Libelle, Libelle_categorie, Prix_unitaire,Photo) "
-                    + "VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO produit(Libelle, Libelle_categorie, Prix_unitaire,Photo) VALUES (?, ?, ?, ?)";
             PreparedStatement pre = conn.prepareStatement(sql);
             pre.setString(1, produitAjoute.getLibelleProduit());
             pre.setString(2, produitAjoute.getCategorie());

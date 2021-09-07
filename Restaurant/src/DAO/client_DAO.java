@@ -89,7 +89,6 @@ public class client_DAO {
         	conn = ConnexionBDD.getConnect() ;	
         	 String sql = "INSERT INTO client VALUES(?,?,?,?,?,?,?)";
         	 PreparedStatement prep = conn.prepareStatement(sql);
-             
              prep.setInt(1, c.getIdClient());
              prep.setString(2, c.getNom());
              prep.setString(3, c.getPrenom());
@@ -110,20 +109,6 @@ public class client_DAO {
         }
         return result;
     }
-
-    /*public boolean suppressionClient(int maKH) {
-        boolean result = false;
-        try {
-        	conn = ConnexionBDD.getConnect() ;	
-            String sql = "UPDATE client SET TinhTrang=0 WHERE MaKH=?";
-            PreparedStatement prep = MyConnect.conn.prepareStatement(sql);
-            prep.setInt(1, maKH);
-            result = prep.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            return false;
-        }
-        return result;
-    }*/
 
     
     /*
