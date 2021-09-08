@@ -59,10 +59,10 @@ public class produit_BUS {
      */
     public ArrayList<produitModele> getProduitSelonCategorie(String categorie) {
         if (!categorie.trim().equals("")) {
-            ArrayList<produitModele> listeProduitTrouve = new ArrayList<>();
+            ArrayList<produitModele> listeProduitTrouve = new ArrayList<>(0);
             try {
                 for (produitModele produit : listeProduit) {
-                    if (produit.getCategorie() == categorie) {
+                    if (produit.getCategorie().toLowerCase().equals(categorie.toLowerCase())) {
                     	listeProduitTrouve.add(produit);
                     }
                 }

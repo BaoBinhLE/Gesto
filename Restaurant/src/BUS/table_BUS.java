@@ -63,6 +63,22 @@ public class table_BUS {
         return flag;
     }
 
+    
+    /*
+     * librer une table 
+     */
+    public boolean tableDispo(int id) {
+    	return tableDAO.tableDispo(id);
+    }
+    
+    /*
+     * changer le statut de la table de disponible à occupée
+     */
+    public boolean tableOccupee(int id) {
+    	return tableDAO.tableOccupee(id);
+    }
+    
+    
     /*
      * déactiver une table de l'application
      */

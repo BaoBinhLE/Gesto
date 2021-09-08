@@ -2,14 +2,16 @@ package BUS;
 
 import java.util.ArrayList;
 
+import DAO.commande_DAO;
 import DAO.detailCommande_DAO;
 import DTO.detailCommande;
 
 public class detailCommande_BUS {
-	private ArrayList<detailCommande> listeDetailCommande;
+	private ArrayList<detailCommande> listeDetailCommande = null;
     private detailCommande_DAO detailCmdDAO = new detailCommande_DAO();
     private facture_BUS factureBUS = new facture_BUS();
-
+    private commande_DAO commandeDAO = new commande_DAO();
+    
     public void lireListeDetail() {
         this.listeDetailCommande = detailCmdDAO.getListeDetailCommande();
     }
@@ -18,6 +20,10 @@ public class detailCommande_BUS {
     	listeDetailCommande = null;
     	lireListeDetail();
         return listeDetailCommande;
+    }
+    
+    public boolean siCommandeContientProduit(int idCmd,int idProduit) {
+    	return detailCmdDAO.siCommandeContientProduit(idCmd,idProduit);
     }
 
     /*public ArrayList<detailCommande> getListCTHoaDonTheoMaHD(String maHD) {
@@ -30,22 +36,15 @@ public class detailCommande_BUS {
         }
 
         return dsct;
-    }
-
-    public void addCTHoaDon(String maSP, String soLuong, String donGia, String thanhTien) {
-        int ma = hdBUS.getMaHoaDonMoiNhat();
-
-        donGia = donGia.replace(",","");
-        thanhTien = thanhTien.replace(",", "");
-
-        CTHoaDon cthd = new CTHoaDon();
-
-        cthd.setMaHD(ma);
-        cthd.setMaSP(Integer.parseInt(maSP));
-        cthd.setDonGia(Integer.parseInt(donGia));
-        cthd.setSoLuong(Integer.parseInt(soLuong));
-        cthd.setThanhTien(Integer.parseInt(thanhTien));
-
-        detailCmdDAO.addCTHoaDon(cthd);
     }*/
+
+    public void addDetailCommande(int idCommande,int idProduit, float prix) {
+        detailCommande produit = new detailCommande(idCommande, idProduit, prix);
+        detailCmdDAO.addDetailCommande(produit);
+    }
+    
+    public void plusUnAProduitExistantACommande(int idCommande,int idProduit) {
+        detailCommande produit = new detailCommande(idCommande, idProduit);
+        detailCmdDAO.plusUnAProduitExistantACommande(produit);
+    }
 }

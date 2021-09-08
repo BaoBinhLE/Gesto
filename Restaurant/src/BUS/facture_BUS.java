@@ -3,7 +3,7 @@ package BUS;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 
 import Custom.monDialogue;
 import DAO.commande_DAO;
@@ -38,7 +38,7 @@ public class facture_BUS {
     }
 
 
-    public ArrayList<commande> getListeFactureSelonDate(String min, String max) {
+    /*public ArrayList<commande> getListeFactureSelonDate(String min, String max) {
         try {
         	if (!min.trim().matches("[0-9]/")&& !max.trim().matches("[0-9]/")) {
         		new monDialogue("La date est en format DD/MM/YYYY . Veuillez ressaisir !", monDialogue.ERROR_DIALOG);
@@ -56,19 +56,13 @@ public class facture_BUS {
             new monDialogue("Veuillez ressaisir la date!", monDialogue.ERROR_DIALOG);
         }
         return null;
-    }
+    }*/
     
     /*
      * recherche des factures par id, idClient, IDRH, date 
      */
     public ArrayList<commande> rechercheFacture(String idCommande,String IDRH, String date) {
-    	if (!idCommande.trim().matches("[0-9]")) {
-    		new monDialogue("Le ID de commande contient que les chiffres . Veuillez ressaisir !", monDialogue.ERROR_DIALOG);
-    	}else if (!IDRH.trim().matches("[0-9]")) {
-    		new monDialogue("Le IDRH de commande contient que les chiffres . Veuillez ressaisir !", monDialogue.ERROR_DIALOG);
-    	}else if (!date.trim().matches("[0-9]/")) {
-    		new monDialogue("La date est en format DD/MM/YYYY . Veuillez ressaisir !", monDialogue.ERROR_DIALOG);
-    	}
+    	
         ArrayList<commande> listeTrouve  = new ArrayList<>();
         for (commande c : listeFacture) {
             String idCmd = Integer.toString(c.getIdCommande());

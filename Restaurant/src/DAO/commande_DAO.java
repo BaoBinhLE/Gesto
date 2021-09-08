@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import DTO.commande;
+import DTO.detailCommande;
 
 public class commande_DAO {
 	private static Connection conn = null;
@@ -119,7 +120,17 @@ public class commande_DAO {
         boolean result = false;
         try {
         	conn = ConnexionBDD.getConnect() ;	
-            String sql1 = "UPDATE client SET point+=" + (int)cmd.getTotal() + " WHERE ID_client=" + cmd.getIdClient();
+        	Statement st = conn.createStatement();
+        	String sql = "INSERT INTO commande(IDRH,id_client, id_table, Date, Statut,Type_Commande, Total_TTC) VALUES(?, ?, ?, ?, ?, ?,?)";
+            PreparedStatement prep = conn.prepareStatement(sql);
+            prep.setInt(1, cmd.getIDRH());
+            prep.setInt(2, cmd.getIdClient());
+            prep.setInt(3, cmd.getIdTable());
+            prep.setDate(4, (Date) cmd.getDate());
+            prep.setInt(5, cmd.getStatut());
+            prep.setInt(6, cmd.getTypeCommande());
+            prep.setFloat(7, cmd.getTotal());
+            /*String sql1 = "UPDATE client SET point+=" + (int)cmd.getTotal() + " WHERE ID_client=" + cmd.getIdClient();
             Statement st = conn.createStatement();
             st.executeUpdate(sql1);
             String sql = "INSERT INTO commande(IDRH, id_client,id_table, Date, Statut,Type_Commande, Total_TTC) VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -130,7 +141,7 @@ public class commande_DAO {
             prep.setTimestamp(4, new java.sql.Timestamp(new java.util.Date().getTime()));
             prep.setInt(5, cmd.getStatut());
             prep.setInt(6, cmd.getTypeCommande());
-            prep.setFloat(6, cmd.getTotal());
+            prep.setFloat(6, cmd.getTotal());*/
             result = prep.executeUpdate() > 0;
         } catch (SQLException ex) {
         	ex.printStackTrace();
@@ -144,11 +155,11 @@ public class commande_DAO {
         return result;
     }
 
-    /*public int getMacommandeMoiNhat() {
+    public int getIdDerniereCommande() {
         try {
         	conn = ConnexionBDD.getConnect() ;	
-            String sql = "SELECT MAX(maHD) FROM hoadon";
-            Statement st = MyConnect.conn.createStatement();
+            String sql = "SELECT MAX(ID_Commande) FROM commande";
+            Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if (rs.next())
                 return rs.getInt(1);
@@ -156,8 +167,46 @@ public class commande_DAO {
             e.printStackTrace();
         }
         return -1;
-    }*/
+    }
+    
+    public int getUncheckBillIDByTableID(int id){
+    	conn = ConnexionBDD.getConnect() ;	
+        String sql = "SELECT * FROM commande WHERE statut = 0 AND id_table = "+id;
+        Statement st;
+		try {
+			st = conn.createStatement();
+	        ResultSet rs = st.executeQuery(sql);
+	        if (rs.next())
+	        return rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return -1;
+    }
 
+    
+    public boolean majMontantCommande(int idCmd, float prix) {
+        boolean result = false;
+        try {
+        	conn = ConnexionBDD.getConnect() ;	
+            String sql = "UPDATE commande SET Total_TTC = Total_TTC + ? WHERE ID_Commande=? ";
+            PreparedStatement prep = conn.prepareStatement(sql);
+            prep.setFloat(1, prix);
+            prep.setInt(2, idCmd);
+            result = prep.executeUpdate() > 0;
+        } catch(SQLException ex) {
+        	ex.printStackTrace();
+        	System.out.println("majMontantCommande-SQLException: " + ex.getMessage());
+        } catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("majMontantCommande-Exception: " + e.getMessage());
+		}finally {
+        	ConnexionBDD.getClose();
+        }
+        return result;
+    }
+    
     public ArrayList<commande> getListFacture(Date dateMin, Date dateMax) {
         try {
         	conn = ConnexionBDD.getConnect() ;	

@@ -3,18 +3,22 @@ package DTO;
 public class detailCommande {
 	private int idCommande;
 	private int idProduit;
-	private int quantite;
+	private int quantite = 1;
 	private float prixUnitaire;
 	
 	public detailCommande() {
 		
 	}
 
-	public detailCommande(int idCommande, int id_produit, int quantite) {
-		super();
+	public detailCommande(int idCommande, int id_produit, float prixUnitaire) {
 		this.idCommande = idCommande;
 		this.idProduit = id_produit;
-		this.quantite = quantite;
+		this.prixUnitaire = prixUnitaire;
+	}
+	
+	public detailCommande(int idCommande, int id_produit) {
+		this.idCommande = idCommande;
+		this.idProduit = id_produit;
 	}
 
 	public int getIdCommande() {

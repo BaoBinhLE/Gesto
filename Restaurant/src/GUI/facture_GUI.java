@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 import BUS.facture_BUS;
@@ -42,7 +44,7 @@ public class facture_GUI extends JPanel{
 	private facture_BUS factureBUS = new facture_BUS();
 	
 	 final Color colorPanel = new Color(247, 247, 247);
-	    JTextField txtIdCmd, txtIDRH, txtDate, txtDateDebut, txtDateFin;
+	    JTextField txtIdCmd, txtIDRH, txtDate;
 	    JButton  btnReset;
 	    monTableau tabFacture;
 	    DefaultTableModel modelTabFacture;
@@ -180,26 +182,60 @@ public class facture_GUI extends JPanel{
 	            }
 	        });
 	        
-	        txtIdCmd.addActionListener(new ActionListener() {
+	    
+	        
+	        txtIdCmd.getDocument().addDocumentListener(new DocumentListener() {
 	            @Override
-	            public void actionPerformed(ActionEvent e) {
+	            public void insertUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
 	            	traiteRechercheFacture();
 	            }
 	        });
 	        
-	        txtIDRH.addActionListener(new ActionListener() {
+	        txtIDRH.getDocument().addDocumentListener(new DocumentListener() {
 	            @Override
-	            public void actionPerformed(ActionEvent e) {
+	            public void insertUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
 	            	traiteRechercheFacture();
 	            }
 	        });
 	        
-	        txtDate.addActionListener(new ActionListener() {
+	        
+	        txtDate.getDocument().addDocumentListener(new DocumentListener() {
 	            @Override
-	            public void actionPerformed(ActionEvent e) {
+	            public void insertUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	            	traiteRechercheFacture();
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
 	            	traiteRechercheFacture();
 	            }
 	        });
+	        
 
 	    }
 
@@ -248,7 +284,5 @@ public class facture_GUI extends JPanel{
 	    	loadTabFacture();
 	        txtIdCmd.setText("");
 	        txtDate.setText("");
-	        txtDateDebut.setText("");
-	        txtDateFin.setText("");
 	    }
 }

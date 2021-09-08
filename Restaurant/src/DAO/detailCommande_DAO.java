@@ -74,22 +74,17 @@ public class detailCommande_DAO {
 
     
     /*
-     * récupérer la liste de commandes qui contiennent un produit
+     * chercher un produit dans une commande 
      */
-    public ArrayList<detailCommande> getListdetailCommandeContientProduit(int idProduit) {
-        ArrayList<detailCommande> listeDetail = new ArrayList<>();
+    public boolean siCommandeContientProduit(int idCmd,int idProduit) {
+        boolean existe = false;
         try {
         	conn = ConnexionBDD.getConnect() ;	
-            String sql = "SELECT * FROM produit_commande WHERE ID_Produit="+idProduit;
+            String sql = "SELECT * FROM produit_commande WHERE ID_Commande = "+idCmd+" AND ID_Produit="+idProduit;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()) {
-                detailCommande detailCmd = new detailCommande();
-                detailCmd.setIdCommande(rs.getInt(1));
-                detailCmd.setIdProduit(rs.getInt(2));
-                detailCmd.setQuantite(rs.getInt(3));
-                detailCmd.setPrixUnitaire(rs.getFloat(4));
-                listeDetail.add(detailCmd);
+            if(rs.next()) {
+            	existe = true;
             }
         } catch(SQLException ex) {
         	ex.printStackTrace();
@@ -100,7 +95,7 @@ public class detailCommande_DAO {
 		}finally {
         	ConnexionBDD.getClose();
         }
-        return listeDetail;
+        return existe;
     }
 
     /*
@@ -133,15 +128,15 @@ public class detailCommande_DAO {
      * augmenter la quantité de produit existant dans la commande 
      * augementer 1 unité  
      */
-    public boolean plusUnAProduitExistantCommande(detailCommande detailCmd) {
+    public boolean plusUnAProduitExistantACommande(detailCommande detailCmd) {
         boolean result = false;
         try {
         	conn = ConnexionBDD.getConnect() ;	
             String sql = "UPDATE produit_commande SET quantite=? WHERE ID_Commande=? AND ID_Produit=?";
             PreparedStatement prep = conn.prepareStatement(sql);
-            prep.setInt(3, detailCmd.getQuantite());
-            prep.setInt(1, detailCmd.getIdCommande());
-            prep.setInt(2, detailCmd.getIdProduit());
+            prep.setInt(1, detailCmd.getQuantite()+1);
+            prep.setInt(2, detailCmd.getIdCommande());
+            prep.setInt(3, detailCmd.getIdProduit());
             result = prep.executeUpdate() > 0;
         } catch(SQLException ex) {
         	ex.printStackTrace();

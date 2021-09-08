@@ -1,17 +1,18 @@
 package DTO;
 
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.Calendar;
 
 public class commande {
 	private int idCommande;
     private int IDRH;
     private int idClient;
     private int idTable;
-    private Date date;
-    private int statut;
-    private int typeCommande;
-    private float total;
+    private Date date = new Date(Calendar.getInstance().getTime().getTime());
+    private int statut = 0 ;
+    private int typeCommande = 0;
+    private float total = 0.F;
     
     public commande() {
     	
@@ -19,14 +20,19 @@ public class commande {
     
 	public commande(int idCommande, int iDRH, int idClient, int idTable, Date date, int statut, int typeCommande,
 			float total) {
-		super();
 		this.idCommande = idCommande;
-		IDRH = iDRH;
+		this.IDRH = iDRH;
 		this.idClient = idClient;
 		this.idTable = idTable;
 		this.date = date;
 		this.statut = statut;
 		this.typeCommande = typeCommande;
+		this.total = total;
+	}
+	
+	public commande(int iDRH, int idTable, float total) {
+		this.IDRH = iDRH;
+		this.idTable = idTable;
 		this.total = total;
 	}
 
