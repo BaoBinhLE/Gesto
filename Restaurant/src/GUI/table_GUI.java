@@ -53,8 +53,7 @@ public class table_GUI extends JPanel{
     private void addControls() {
         Font font = new Font("Tahoma", Font.PLAIN, 20);
 
-        this.setLayout(new BorderLayout());
-        this.setBackground(colorPanel);
+        
 
 
         /*
@@ -161,7 +160,7 @@ public class table_GUI extends JPanel{
         JScrollPane scrtabTable = new JScrollPane(tabTable);
 
         this.add(panelTable, BorderLayout.NORTH);
-        this.add(scrtabTable, BorderLayout.CENTER);
+        this.add(scrtabTable, BorderLayout.SOUTH);
 
         loadTabTable();
     }

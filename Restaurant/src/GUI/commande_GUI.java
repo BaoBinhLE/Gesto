@@ -56,7 +56,7 @@ public class commande_GUI extends JPanel{
 	private commande_BUS commandeBUS = new commande_BUS();
 	private detailCommande_BUS detailCommandeBUS = new detailCommande_BUS();
 	final Color colorPanel = new Color(247, 247, 247);
-	JLabel titre;
+	JLabel titre,label;
 	JButton btnAjoute, btnSupp, btnPaie;
     monTableau tabDetail;
     DefaultTableModel modelTabDetail;
@@ -147,6 +147,8 @@ public class commande_GUI extends JPanel{
         pnArticle.add(choixArticle);
         pnBox.add(pnArticle);
         pnAjoute.add(pnBox);
+      
+        
         //========= BOUTON AJOUTER ========//
         JPanel pnBtnAjoute = new transparentPanel();
         pnBtnAjoute.setLayout(new FlowLayout());
@@ -173,6 +175,18 @@ public class commande_GUI extends JPanel{
         JScrollPane scrtabDetail = new JScrollPane(tabDetail);
         panelDetail.add(scrtabDetail);
 
+        
+        //========= TEXTE MONTANT ==========//
+        JPanel pnText = new transparentPanel();
+        pnText.setLayout(new BoxLayout(pnText, BoxLayout.Y_AXIS));
+        
+        JPanel pnLabel = new transparentPanel();
+        label = new JLabel("<html><h3>Montant : </h3></html>");
+        pnLabel.add(label);
+        pnText.add(pnLabel);
+        
+        panelDetail.add(pnText);
+        
       //================PANEL BUTTON=========
         JPanel pnBtn = new transparentPanel();
         pnBtn.setLayout(new BoxLayout(pnBtn,BoxLayout.X_AXIS));
