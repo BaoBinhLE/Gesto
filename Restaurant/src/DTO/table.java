@@ -3,16 +3,14 @@ package DTO;
 public class table {
 	private int id ;
 	private String libelle;
-	private int statut;
+	private int statut = 1;
 	
 	public table() {
 		
 	}
 	
-	public table(int id, String libelle, int statut) {
-		this.id = id;
+	public table(String libelle) {
 		this.libelle = libelle;
-		this.statut = statut;
 	}
 
 	public int getId() {

@@ -51,9 +51,7 @@ public class table_BUS {
             new monDialogue("Veuillez saisir le nom de la table !", monDialogue.ERROR_DIALOG);
             return false;
         }
-        table c = new table();
-        c.setLibelle(libelle);
-        c.setStatut(1);
+        table c = new table(libelle);
         boolean flag = tableDAO.ajouteTable(c);
         if (flag) {
             new monDialogue("La table est ajoutée !", monDialogue.SUCCESS_DIALOG);

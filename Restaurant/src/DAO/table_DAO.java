@@ -51,7 +51,7 @@ public class table_DAO {
 		 String sql = "INSERT INTO tab(libelle, statut) VALUES(?,?)";
 		 PreparedStatement prep = conn.prepareStatement(sql);
 	     prep.setString(1, t.getLibelle());
-	     prep.setInt(2, 1);
+	     prep.setInt(2, t.getStatut());
 	     result = prep.executeUpdate() > 0;
         } catch (SQLException ex) {
         	ex.printStackTrace();

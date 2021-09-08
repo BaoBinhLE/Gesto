@@ -96,31 +96,9 @@ public class commande_GUI extends JPanel{
         ArrayList<table> tableList = tableBUS.getlisteTable();
         JPanel panelTable = new transparentPanel();
         panelTable.setLayout(new FlowLayout(FlowLayout.LEADING));
-        JButton[] button = new JButton[tableList.size()];
-        for(int i=0;i<tableList.size();i++)
-        {
-        	String status = null ;
-            Color c;
-            button[i] = new JButton() ;
-            button[i].setPreferredSize(new Dimension(120,80));
-            switch (tableList.get(i).getStatut())
-            {
-                case 1:
-                	c =  new Color(51,204,255); //VERY_LIGHT_BLUE
-                	status = " disponible";
-                    break;
-                default:
-                	c = new Color(255,102,102); // LIGHT_PINK
-                    break;
-            }
-            button[i].setText("<html>"+(String)tableList.get(i).getLibelle()+"<br>"+status+ "</html>");
-            button[i].setBackground(c);
-            // Handler des actions avec les boutons Table
-            Ecouteur e = new Ecouteur(tableList.get(i).getId(),button[i],modelTabDetail);
-    		button[i].addActionListener(e);
-    		
-            panelTable.add(button[i]);
-        }
+        
+        loadTable(panelTable);
+     
         JScrollPane scrtabTable = new JScrollPane(panelTable);
         panelRemplir.add(scrtabTable);
         
@@ -239,6 +217,7 @@ public class commande_GUI extends JPanel{
 	}
 	private articleCommande_BUS articleCommandeBUS = new articleCommande_BUS();
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void showCommande(int idTable) {
 		modelTabDetail.setRowCount(0);
         ArrayList<articleCommande> liste = new ArrayList<articleCommande> ();
@@ -253,8 +232,35 @@ public class commande_GUI extends JPanel{
         } 
 	}
 	
-	private void loadTable() {
-		
+	private void loadTable(JPanel panelTable) {
+		panelTable.removeAll();
+		ArrayList<table> tableList = tableBUS.getlisteTable();
+		JButton[] button = new JButton[tableList.size()];
+        for(int i=0;i<tableList.size();i++)
+        {
+        	String status = null ;
+            Color c;
+            button[i] = new JButton() ;
+            button[i].setPreferredSize(new Dimension(120,80));
+            switch (tableList.get(i).getStatut())
+            {
+                case 1:
+                	c =  new Color(51,204,255); //VERY_LIGHT_BLUE
+                	status = " disponible";
+                    break;
+                default:
+                	c = new Color(255,102,102); // LIGHT_PINK
+                	status = "occupée";
+                    break;
+            }
+            button[i].setText("<html>"+(String)tableList.get(i).getLibelle()+"<br>"+status+ "</html>");
+            button[i].setBackground(c);
+            // Handler des actions avec les boutons Table
+            Ecouteur e = new Ecouteur(tableList.get(i).getId(),button[i],modelTabDetail);
+    		button[i].addActionListener(e);
+    		
+            panelTable.add(button[i]);
+        }
 	}
 	
 	 private void loadCategorie() {
